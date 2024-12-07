@@ -49,7 +49,7 @@
             <span class="logo-text">GERAK MAYA</span>
           </div>
           <ul class="menu">
-            <li><a href="#home">Home</a></li>
+            <li><a href="#home">Dashboard</a></li>
             <li><a href="#about">About Us</a></li>
             <li><a href="#services">Services</a></li>
           </ul>
@@ -193,7 +193,7 @@
             <p>Sebagai mahasiswa Teknik Informatika, saya sedang mengembangkan website simulasi fisika untuk memenuhi tugas akhir. Tujuannya adalah untuk memvisualisasikan simulasi fisika sederhana agar lebih mudah dipahami.</p>
           </div>
           <div class="box">
-            <a href="#home">Home</a>
+            <a href="#home">Dashboard</a>
             <a href="#about">About Us</a>
             <a href="#services">Services</a>
           </div>
