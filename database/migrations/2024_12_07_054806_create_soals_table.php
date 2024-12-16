@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('soals', function (Blueprint $table) {
             $table->id();
+            $table->text('soal');
+            $table->string('jawaban_a');
+            $table->string('jawaban_b');
+            $table->string('jawaban_c');
+            $table->string('jawaban_d');
+            $table->string('kunci_jawaban');
+            $table->string('point');
             $table->timestamps();
         });
     }
