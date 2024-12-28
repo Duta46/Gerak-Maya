@@ -30,8 +30,13 @@ class SoalController extends Controller
                             </span>
                         </button>
                         <div class="dropdown-menu menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-100px py-4" data-kt-menu="true">
+                        <div class="menu-item px-3">
+                            <a href="' . route('soal.show', $item->id) . '" class="menu-link px-3">
+                                Soal Detail
+                            </a>
+                        </div>
                             <div class="menu-item px-3">
-                                <a href="' . route('', $item->id) . '" class="menu-link px-3">
+                                <a href="' . route('soal.edit', $item->id) . '" class="menu-link px-3">
                                     Edit
                                 </a>
                             </div>
@@ -52,7 +57,7 @@ class SoalController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.soal.create');
     }
 
     /**
@@ -60,7 +65,73 @@ class SoalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->except('_token');
+
+        $validate = [
+            'kunci_jawaban' => 'required|string',
+            'point_soal' => 'required|string',
+        ];
+
+        if ($request->has('soal')) {
+            $validate['soal'] = 'string';
+            $input = strip_tags($request->input('soal'));
+            $input = preg_replace('/&hellip;|&nbsp;/', '', $input);
+            $input = preg_replace('/&rdquo;/', '"', $input);
+            $validate['soal'] = 'nullable|string';
+            $data['soal'] = $input;
+        } else {
+            $data['soal'] = null;
+        }
+
+        if ($request->has('jawaban_a')) {
+            $validate['jawaban_a'] = 'string';
+            $input = strip_tags($request->input('jawaban_a'));
+            $input = preg_replace('/&hellip;|&nbsp;/', '', $input);
+            $input = preg_replace('/&rdquo;/', '"', $input);
+            $validate['jawaban_a'] = 'nullable|string';
+            $data['jawaban_a'] = $input;
+        } else {
+            $data['jawaban_a'] = null;
+        }
+
+        if ($request->has('jawaban_b')) {
+            $validate['jawaban_b'] = 'string';
+            $input = strip_tags($request->input('jawaban_b'));
+            $input = preg_replace('/&hellip;|&nbsp;/', '', $input);
+            $input = preg_replace('/&rdquo;/', '"', $input);
+            $validate['jawaban_b'] = 'nullable|string';
+            $data['jawaban_b'] = $input;
+        } else {
+            $data['jawaban_b'] = null;
+        }
+
+        if ($request->has('jawaban_c')) {
+            $validate['jawaban_c'] = 'string';
+            $input = strip_tags($request->input('jawaban_c'));
+            $input = preg_replace('/&hellip;|&nbsp;/', '', $input);
+            $input = preg_replace('/&rdquo;/', '"', $input);
+            $validate['jawaban_c'] = 'nullable|string';
+            $data['jawaban_c'] = $input;
+        } else {
+            $data['jawaban_c'] = null;
+        }
+
+        if ($request->has('jawaban_d')) {
+            $validate['soal'] = 'string';
+            $input = strip_tags($request->input('jawaban_d'));
+            $input = preg_replace('/&hellip;|&nbsp;/', '', $input);
+            $input = preg_replace('/&rdquo;/', '"', $input);
+            $validate['jawaban_d'] = 'nullable|string';
+            $data['jawaban_d'] = $input;
+        } else {
+            $data['jawaban_d'] = null;
+        }
+
+        $request->validate($validate);
+
+        Soal::create($data);
+
+        return redirect()->route('soal.index')->with('success', 'Berhasil Tambah Soal');
     }
 
     /**
@@ -68,7 +139,9 @@ class SoalController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $soal = Soal::find($id);
+
+        return view('admin.soal.show', compact('soal'));
     }
 
     /**
@@ -76,7 +149,11 @@ class SoalController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $soal = Soal::find($id);
+
+        return view('admin.soal.edit', [
+            'soal' => $soal,
+        ]);
     }
 
     /**
@@ -84,7 +161,63 @@ class SoalController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->except('_token');
+
+        $validate = [
+            'kunci_jawaban' => 'required|string',
+            'point_soal' => 'required|string',
+        ];
+
+        $soal = Soal::find($id);
+
+        if ($request->has('soal')) {
+            $validate['soal'] = 'string';
+            $input = strip_tags($request->input('soal'));
+            $input = preg_replace('/&hellip;|&nbsp;/', '', $input);
+            $input = preg_replace('/&rdquo;/', '"', $input);
+            $validate['soal'] = 'nullable|string';
+            $data['soal'] = $input;
+        }
+
+        if ($request->has('jawaban_a')) {
+            $validate['jawaban_a'] = 'string';
+            $input = strip_tags($request->input('jawaban_a'));
+            $input = preg_replace('/&hellip;|&nbsp;/', '', $input);
+            $input = preg_replace('/&rdquo;/', '"', $input);
+            $validate['jawaban_a'] = 'nullable|string';
+            $data['jawaban_a'] = $input;
+        }
+
+        if ($request->has('jawaban_b')) {
+            $validate['jawaban_b'] = 'string';
+            $input = strip_tags($request->input('jawaban_b'));
+            $input = preg_replace('/&hellip;|&nbsp;/', '', $input);
+            $input = preg_replace('/&rdquo;/', '"', $input);
+            $validate['jawaban_b'] = 'nullable|string';
+            $data['jawaban_b'] = $input;
+        }
+
+        if ($request->has('jawaban_c')) {
+            $validate['jawaban_c'] = 'string';
+            $input = strip_tags($request->input('jawaban_c'));
+            $input = preg_replace('/&hellip;|&nbsp;/', '', $input);
+            $input = preg_replace('/&rdquo;/', '"', $input);
+            $validate['jawaban_c'] = 'nullable|string';
+            $data['jawaban_c'] = $input;
+        }
+
+        if ($request->has('jawaban_d')) {
+            $validate['jawaban_d'] = 'string';
+            $input = strip_tags($request->input('jawaban_d'));
+            $input = preg_replace('/&hellip;|&nbsp;/', '', $input);
+            $input = preg_replace('/&rdquo;/', '"', $input);
+            $validate['jawaban_d'] = 'nullable|string';
+            $data['jawaban_d'] = $input;
+        }
+
+        $soal->update($data);
+
+        return redirect()->route('soal.index')->with('success', 'Berhasil Ubah Soal');
     }
 
     /**
@@ -92,6 +225,28 @@ class SoalController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $soal = Soal::find($id);
+
+            if (!$soal) {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Soal not found',
+                ], 404);
+            }
+
+            //Menghapus soal
+            $soal->delete();
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Soal deleted',
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $e->getMessage(),
+            ], 500);
+        }
     }
 }

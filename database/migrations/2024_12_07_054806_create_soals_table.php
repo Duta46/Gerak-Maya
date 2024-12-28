@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('jawaban_c');
             $table->string('jawaban_d');
             $table->string('kunci_jawaban');
-            $table->string('point');
+            $table->string('point_soal');
             $table->timestamps();
         });
     }

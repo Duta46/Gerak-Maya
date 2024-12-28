@@ -55,12 +55,21 @@
                     </a>
                 </div>
                 @role('Super Admin')
+                <div class="menu-item">
+                    <a class="menu-link {{ Route::is('soal.index') ? 'active' : '' }}"
+                        href="{{ route('soal.index') }}">
+                        <span class="menu-icon">
+                            <i class="fa-solid fa-clipboard-list"></i>
+                        </span>
+                        <span class="menu-title">Soal</span>
+                    </a>
+                </div>
                 @endrole
             </div>
         </div>
     </div>
     <div class="app-sidebar-footer flex-column-auto pt-2 pb-6 px-6" id="kt_app_sidebar_footer">
-        <form action="{{ route('logout') }}" method="POST" id="logout-form">
+        <form action="{{  route('admin.logout') }}" method="POST" id="logout-form">
             @csrf
             <a onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                 class="btn btn-flex flex-center btn-custom btn-primary overflow-hidden text-nowrap px-0 h-40px w-100"

@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'Title Form')
+@section('title', 'Soal')
 
 @section('page-title')
     <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
         <h1 class="page-heading d-flex text-dark fw-bold flex-column justify-content-center my-0">
-            Title Form
+            Soal
         </h1>
     </div>
 @endsection
@@ -24,25 +24,23 @@
                     </svg>
                 </span>
                 <input type="search" name="search" class="form-control form-control-solid w-250px ps-15" id="search"
-                    placeholder="Search.." />
+                    placeholder="Cari.." />
             </div>
             <div class="d-flex flex-stack">
-                <a type="button" class="btn btn-primary ms-2" href="{{ route('title-form.create') }}">
-                    Tambah Soal
-                </a>
+                    <a type="button" class="btn btn-primary ms-2" href="{{ route('soal.create') }}">
+                        Tambah Soal
+                    </a>
             </div>
         </div>
         <div class="card-body pt-0">
-            <table id="title-form-table" class="table align-middle table-row-dashed fs-6 gy-5">
+            <table id="soal-table" class="table align-middle table-row-dashed fs-6 gy-5">
                 <thead>
                     <tr class="fw-semibold fs-6 text-muted">
                         <th class="text-start min-w-100px">No</th>
-                        <th class="text-start min-w-70px">Name Title Form</th>
+                        <th class="text-start min-w-100px">Soal</th>
                         <th class="text-end min-w-100px">Actions</th>
                     </tr>
                 </thead>
-                <tbody class="fw-semibold text-gray-600">
-                </tbody>
             </table>
         </div>
     </div>
@@ -62,33 +60,34 @@
                     name: 'DT_RowIndex',
                     orderable: true,
                     searchable: true,
-                    width: '5%'
+                    width: '10%'
                 },
                 {
-                    data: 'name',
-                    name: 'name',
+                    data: 'soal',
+                    name: 'soal',
                     orderable: true,
                     searchable: true,
-                    width: '20%'
+                    width: '30%',
                 },
                 {
                     data: 'actions',
                     name: 'actions',
-                    orderable: true,
-                    searchable: true,
-                    width: '15%'
+                    orderable: false,
+                    searchable: false,
+                    width: '10%'
                 },
-
             ],
             order: [
                 [0, "asc"]
-            ]
+            ],
+
         })
 
         $('#search').on('keyup', function() {
             datatable.search(this.value).draw();
         });
-
+    </script>
+    <script>
         $(document).on("click", ".delete-confirm", function(e) {
             e.preventDefault();
             Swal.fire({
@@ -96,8 +95,8 @@
                     confirmButton: 'btn btn-danger',
                     cancelButton: 'btn btn-light'
                 },
-                title: 'Are you sure?',
-                text: "Are you sure you want to delete this data?",
+                title: 'Apakah anda yakin?',
+                text: "Apakah anda yakin ingin menghapus data ini?",
                 icon: 'question',
                 showCancelButton: true,
                 confirmButtonText: 'Delete'
@@ -105,7 +104,7 @@
                 if (result.isConfirmed) {
                     e.preventDefault();
                     var id = $(this).data("id");
-                    var route = "{{ route('title-form.destroy', ':id') }}";
+                    var route = "{{ route('soal.destroy', ':id') }}";
                     route = route.replace(':id', id);
                     $.ajax({
                         url: route,

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title') | {{ $setting->name ?? config('app.name', 'Maxart') }}</title>
+    <title>@yield('title') | {{ $setting->name ?? config('app.name', 'GerakMaya') }}</title>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -20,7 +20,7 @@
 
     <!-- Styles -->
     {{-- @livewireStyles --}}
-    <link rel="shortcut icon" href="{{ isset($setting->favicon) ? asset('storage/' . $setting->favicon) : asset('assets/images/Japanify.jpeg') }}" />
+    <link rel="shortcut icon" href="{{ isset($setting->favicon) ? asset('storage/' . $setting->favicon) : asset('assets/icon/gm.png') }}" />
     <link href="{{ asset('assets/plugins/custom/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
@@ -32,7 +32,7 @@
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 </head>
 
-<body data-kt-name="Maxart" id="kt_app_body" data-kt-app-layout="dark-sidebar" data-kt-app-header-fixed="true" data-kt-app-sidebar-enabled="true" data-kt-app-sidebar-fixed="true" data-kt-app-sidebar-hoverable="true"
+<body data-kt-name="GerakMaya" id="kt_app_body" data-kt-app-layout="dark-sidebar" data-kt-app-header-fixed="true" data-kt-app-sidebar-enabled="true" data-kt-app-sidebar-fixed="true" data-kt-app-sidebar-hoverable="true"
     data-kt-app-sidebar-push-header="true" data-kt-app-sidebar-push-toolbar="true" data-kt-app-sidebar-push-footer="true" data-kt-app-toolbar-enabled="true" class="app-default">
     <script>
         if (document.documentElement) {
