@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\ViewController;
 use App\Http\Controllers\Admin\SoalController;
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\User\QuizController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -12,6 +13,8 @@ use App\Http\Controllers\Admin\LoginController;
 Route::get('/', [ViewController::class, 'index'])->name('home');
 
 Route::get('simulasi', [ViewController::class, 'simulasi'])->name('simulasi');
+
+Route::get('quiz', [QuizController::class, 'index'])->name('quiz');
 
 Route::get('admin/login', [LoginController::class, 'index'])->name('admin.login');
 Route::post('/admin/login', [LoginController::class, 'login'])->name('admin.login.post');
