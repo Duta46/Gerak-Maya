@@ -9,7 +9,7 @@ use App\Http\Controllers\Admin\LoginController;
 //     return view('welcome');
 // });
 
-Route::get('/', [ViewController::class, 'index']);
+Route::get('/', [ViewController::class, 'index'])->name('home');
 
 Route::get('simulasi', [ViewController::class, 'simulasi'])->name('simulasi');
 
