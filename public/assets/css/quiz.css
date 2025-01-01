@@ -1,109 +1,173 @@
 body {
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f0f0f0;
-  font-family: Arial, sans-serif;
-}
-
-.container {
-  text-align: center;
-}
-
-h1 {
-  color: #333;
-}
-
-.radio-input input {
-  display: none;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #89f7fe, #66a6ff);
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
 }
 
 .radio-input {
-  display: flex;
-  flex-direction: column;
-  padding: 12px;
-  background: #fff;
-  color: #000;
-  border-radius: 10px;
-  box-shadow: 0px 87px 78px -39px rgba(0,0,0,0.4);
-  width: 320px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background: #ffffff;
+    color: #000;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    width: 360px;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.radio-input:hover {
+    transform: scale(1.03);
 }
 
 .info {
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .question {
-  color: rgb(49, 49, 49);
-  font-size: 1rem;
-  line-height: 1rem;
-  font-weight: 800;
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: 700;
 }
 
 .steps {
-  background-color: rgb(0, 0, 0);
-  padding: 4px;
-  color: #fff;
-  border-radius: 4px;
-  font-size: 12px;
-  line-height: 12px;
-  font-weight: 600;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    padding: 5px 10px;
+    color: #fff;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
 }
 
-.radio-input  label {
-  display: flex;
-  background-color: #fff;
-  padding: 14px;
-  margin: 8px 0 0 0;
-  font-size: 13px;
-  font-weight: 600;
-  border-radius: 10px;
-  cursor: pointer;
-  border: 1px solid rgba(187, 187, 187, 0.164);
-  color: #000;
-  transition: .3s ease;
+.radio-input label {
+    display: flex;
+    align-items: center;
+    background: #f9f9f9;
+    padding: 15px;
+    margin: 10px 0;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    color: #333;
+    transition: all 0.3s ease;
 }
 
-.radio-input  label:hover {
-  background-color: rgba(24, 24, 24, 0.13);
-  border: 1px solid #bbb;
-}
-
-.result {
-  margin-top: 10px;
-  font-weight: 600;
-  font-size: 12px;
-  display: none;
-  transition: display .4s ease;
-}
-
-.result.success {
-  color: green;
-}
-
-.result.error {
-  color: red;
+.radio-input label:hover {
+    background: #f0f0f0;
+    border-color: #007bff;
+    transform: translateX(5px);
 }
 
 .radio-input input:checked + label {
-  border-color: red;
-  color: red;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+    border-color: #2575fc;
+    transform: scale(1.02);
 }
 
-.radio-input input[value="value-2"]:checked + label {
-  border-color: rgb(22, 245, 22);
-  color: rgb(16, 184, 16);
+.result {
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: 600;
+    display: none;
+    transition: opacity 0.4s ease;
 }
 
-.radio-input:has(input[value="value-2"]:checked) .result.success {
-  display: flex;
+.result.success {
+    color: #28a745;
 }
 
-.radio-input:has(input:not([value="value-2"]):checked ) .result.error {
-  display: flex;
+.result.error {
+    color: #dc3545;
 }
+
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.navigation-buttons button {
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.navigation-buttons button:hover {
+    transform: translateY(-3px);
+}
+
+.prev-button {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+}
+
+.prev-button:hover {
+    background: linear-gradient(135deg, #3a8fe5, #00d4fb);
+}
+
+.next-button {
+    background: linear-gradient(135deg, #43e97b, #38f9d7);
+}
+
+.next-button:hover {
+    background: linear-gradient(135deg, #36cc70, #32e4b7);
+}
+
+.flag-button {
+    background: linear-gradient(135deg, #f7971e, #ffd200);
+}
+
+.flag-button:hover {
+    background: linear-gradient(135deg, #d68517, #e5c000);
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.option-button {
+    display: block;
+    padding: 15px;
+    background: #f9f9f9;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.option-button:hover {
+    background: #f0f0f0;
+    border-color: #007bff;
+    transform: translateX(5px);
+}
+
+.option-button.selected {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+    border-color: #2575fc;
+    transform: scale(1.02);
+}
+
